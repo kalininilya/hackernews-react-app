@@ -1,24 +1,30 @@
-import React, {Component} from 'react'
-import PropTypes from 'prop-types'
-import {getItemsByIds} from '../api/hn-api'
-import moment from 'moment'
+import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { getItemsByIds } from "../api/hn-api";
+import moment from "moment";
 
 class Comment extends Component {
   constructor() {
     super();
     this.state = {
       kids: []
-    }
+    };
   }
 
   componentDidMount() {
     if (this.props.kids) {
-      getItemsByIds(this.props.kids).then(kids => this.setState({kids}))
+      getItemsByIds(this.props.kids).then(kids =>
+        this.setState({
+          kids
+        })
+      );
     }
   }
 
   createMarkup(text) {
-    return {__html: text}
+    return {
+      __html: text
+    };
   }
 
   render() {
@@ -26,24 +32,23 @@ class Comment extends Component {
       return (
         <div className="comment">
           <div className="comment-title">
-            <span className="toggle-comment">
-              [-]
-            </span>
-            {" "}{this.props.item.by}{" "}{moment(this.props.item.time * 1000).fromNow()}
+            <span className="toggle-comment"> [-] </span> {this.props.item.by}{" "}
+            {moment(this.props.item.time * 1000).fromNow()}
           </div>
-          <div dangerouslySetInnerHTML={this.createMarkup(this.props.item.text)}></div>
-          {this
-            .state
-            .kids
-            .map(item => <Comment key={item.id} item={item} kids={item.kids}/>)}
+          <div
+            dangerouslySetInnerHTML={this.createMarkup(this.props.item.text)}
+          />
+          {this.state.kids.map(item =>
+            <Comment key={item.id} item={item} kids={item.kids} />
+          )}{" "}
         </div>
       );
     } else {
-      return null
+      return null;
     }
   }
 }
 
-Comment.propTypes = {}
+Comment.propTypes = {};
 
-export default Comment
+export default Comment;

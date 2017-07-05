@@ -1,7 +1,7 @@
 .App {
   width: 85%;
   margin: 0 auto;
-  background-color: #F6F6EF;
+  background-color: #f6f6ef;
   margin-top: 8px;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: black;
@@ -115,7 +115,6 @@
   font-size: 12px;
   padding-top: 5px;
   padding-bottom: 5px;
-  /*border: 1px solid black;*/
 }
 
 .comment a {
