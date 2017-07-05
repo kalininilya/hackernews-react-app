@@ -20,11 +20,31 @@ const Header = () => {
             </Link>
           </strong>
         </li>
-        <li className="categories-item">new</li>
-        <li className="categories-item">| comments</li>
-        <li className="categories-item">| show</li>
-        <li className="categories-item">| ask</li>
-        <li className="categories-item">| jobs</li>
+        <li className="categories-item">
+          <Link to="/new" className="header-link">
+            new
+          </Link>
+        </li>
+        <li className="categories-item">
+          <Link to="/comments" className="header-link">
+            | comments
+          </Link>
+        </li>
+        <li className="categories-item">
+          <Link to="/show" className="header-link">
+            | show
+          </Link>
+        </li>
+        <li className="categories-item">
+          <Link to="/ask" className="header-link">
+            | ask
+          </Link>
+        </li>
+        <li className="categories-item">
+          <Link to="/jobs" className="header-link">
+            | jobs
+          </Link>
+        </li>
       </ul>
     </header>
   );

@@ -71,13 +71,21 @@
 }
 
 .stories-list {
-  padding-left: 30px;
+  padding-left: 5px;
   padding-right: 5px;
 }
 
 .post {
+  list-style: none;
+  padding-left: 0;
   font-size: 14px;
   margin-bottom: 5px;
+  display: flex;
+  min-height: 30px;
+}
+
+.post-wrapper {
+  margin-left: 5px;
 }
 
 .post-title {
@@ -131,7 +139,34 @@
   font-size: 12px;
 }
 
+.nav-link {
+  color: #828282;
+  margin-right: 5px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.nav-links-wrapper {
+  padding-left: 30px;
+  margin-bottom: 20px;
+}
+
+.loading-wrapper {
+  margin: 200px 0;
+  display: flex;
+  justify-content: space-around;
+  /*background-color: red;*/
+}
+
 .footer {
   border-top: 2px solid #63b9ff;
   text-align: center;
+  min-height: 50px;
+  padding-top: 10px;
+}
+
+.github-link {
+  font-size: 13px;
+  color: #828282;
+  vertical-align: middle;
 }
