@@ -46,10 +46,26 @@ export function getBestStoriesIds() {
     .catch(e => console.error("Error: ", e));
 }
 
-export function getNewStories() {
+export function getNewStoriesIds() {
   const fetchUrl = `${API_URL}newstories.json`;
   return fetch(fetchUrl)
     .then(res => res.json())
     .then(data => data)
     .catch(e => console.error("Error: ", e));
+}
+
+export function getTopStories(page, ITEMS_PER_PAGE) {
+  return getTopStoriesIds().then(ids => {
+    return getItemsByIds(
+      ids.slice(page * ITEMS_PER_PAGE - ITEMS_PER_PAGE, page * ITEMS_PER_PAGE)
+    );
+  });
+}
+
+export function getNewStories(page, ITEMS_PER_PAGE) {
+  return getNewStoriesIds().then(ids => {
+    return getItemsByIds(
+      ids.slice(page * ITEMS_PER_PAGE - ITEMS_PER_PAGE, page * ITEMS_PER_PAGE)
+    );
+  });
 }

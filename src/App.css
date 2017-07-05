@@ -94,6 +94,10 @@
   text-decoration: none;
 }
 
+.domain-title {
+  font-size: 11px;
+}
+
 .post-title:visited {
   color: #828282;
 }

@@ -24,7 +24,7 @@ class Post extends Component {
           <a className="post-title" href={this.props.story.url}>
             {this.props.story.title}
           </a>{" "}
-          <span>{domainName}</span>
+          <span className="domain-title">{domainName}</span>
           <div className="post-descr">
             {this.props.story.score} points by {this.props.story.by}{" "}
             {timeFromNow}
