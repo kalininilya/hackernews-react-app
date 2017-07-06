@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../logo.svg";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -15,35 +15,59 @@ const Header = () => {
         </div>
         <li className="categories-item categories-item-hn-name">
           <strong>
-            <Link to="/" className="header-link">
+            <Link to="/" className="header-link header-link-home">
               Hacker News
             </Link>
           </strong>
         </li>
         <li className="categories-item">
-          <Link to="/new" className="header-link">
+          <NavLink
+            to="/new"
+            className="header-link"
+            activeClassName="active-nav-link"
+          >
             new
-          </Link>
+          </NavLink>
         </li>
         <li className="categories-item">
-          <Link to="/comments" className="header-link">
-            | comments
-          </Link>
+          |{" "}
+          {/*<NavLink
+            to="/comments"
+            className="header-link"
+            activeClassName="active-nav-link"
+          >*/}
+          comments
+          {/*</NavLink>*/}
         </li>
         <li className="categories-item">
-          <Link to="/show" className="header-link">
-            | show
-          </Link>
+          |{" "}
+          <NavLink
+            to="/show"
+            className="header-link"
+            activeClassName="active-nav-link"
+          >
+            show
+          </NavLink>
         </li>
         <li className="categories-item">
-          <Link to="/ask" className="header-link">
-            | ask
-          </Link>
+          |{" "}
+          <NavLink
+            to="/ask"
+            className="header-link"
+            activeClassName="active-nav-link"
+          >
+            ask
+          </NavLink>
         </li>
         <li className="categories-item">
-          <Link to="/jobs" className="header-link">
-            | jobs
-          </Link>
+          |{" "}
+          <NavLink
+            to="/jobs"
+            className="header-link"
+            activeClassName="active-nav-link"
+          >
+            jobs
+          </NavLink>
         </li>
       </ul>
     </header>

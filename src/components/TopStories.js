@@ -1,32 +1,26 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
-import { getTopStoriesIds, getItemsByIds, getTopStories } from "../api/hn-api";
+import { getTopStories } from "../api/hn-api";
 import Post from "./Post";
 import Loading from "./Loading";
 import Pagination from "./Pagination";
 
 class TopStories extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      topStories: [],
-      loaded: false
-    };
-  }
+  state = {
+    topStories: [],
+    loaded: false
+  };
 
   componentDidMount() {
     const itemsPerPage = 30;
-    const page = parseInt(this.props.match.params.page) || 1;
+    const page = parseInt(this.props.match.params.page, 10) || 1;
     getTopStories(page, itemsPerPage).then(topStories =>
       this.setState({ topStories, loaded: true })
     );
   }
 
-  componentWillReceiveProps(nextProps) {
-    const page = parseInt(this.props.match.params.page) || 1;
+  componentWillReceiveProps() {
+    const page = parseInt(this.props.match.params.page, 10) || 1;
     const itemsPerPage = 30;
-
     this.setState({ loaded: false });
     getTopStories(page, itemsPerPage).then(topStories =>
       this.setState({ topStories, loaded: true })
@@ -35,31 +29,26 @@ class TopStories extends Component {
 
   render() {
     const itemsPerPage = 30;
-    const page = parseInt(this.props.match.params.page) || 1;
-    if (this.state.loaded === true) {
-      return (
-        <div>
-          <ul className="stories-list">
-            {this.state.topStories.map((story, index, arr) => {
-              return (
-                <Post
-                  className="post"
-                  story={story}
-                  key={story.id}
-                  itemId={page * itemsPerPage - (arr.length - index)}
-                />
-              );
-            })}
-          </ul>
-          <Pagination page={page} category="/stories/" />
-        </div>
-      );
-    } else {
-      return <Loading />;
-    }
+    const page = parseInt(this.props.match.params.page, 10) || 1;
+
+    if (!this.state.loaded) return <Loading />;
+    return (
+      <div>
+        <ul className="stories-list">
+          {this.state.topStories.map((story, index, arr) =>
+            <Post
+              className="post"
+              story={story}
+              key={story.id}
+              itemId={page * itemsPerPage - arr.length + index}
+              showId
+            />
+          )}
+        </ul>
+        <Pagination page={page} category="/stories/" />
+      </div>
+    );
   }
 }
-
-TopStories.propTypes = {};
 
 export default TopStories;

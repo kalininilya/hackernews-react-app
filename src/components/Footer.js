@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
 
 class Footer extends Component {
   render() {
@@ -9,6 +8,7 @@ class Footer extends Component {
           className="github-link"
           href="https://github.com/kalininilya/hackernews-react-app"
           target="_blank"
+          rel="noopener noreferrer"
         >
           kalininilya/hackernews-react-app
         </a>
@@ -16,7 +16,5 @@ class Footer extends Component {
     );
   }
 }
-
-Footer.propTypes = {};
 
 export default Footer;

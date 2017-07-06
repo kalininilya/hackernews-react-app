@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { getNewStories } from "../api/hn-api";
+import { getJobStories } from "../api/hn-api";
 import Post from "./Post";
 import Loading from "./Loading";
 import Pagination from "./Pagination";
 
-class NewStories extends Component {
+class JobStories extends Component {
   state = {
     topStories: [],
     loaded: false
@@ -13,7 +13,7 @@ class NewStories extends Component {
   componentDidMount() {
     const itemsPerPage = 30;
     const page = parseInt(this.props.match.params.page, 10) || 1;
-    getNewStories(page, itemsPerPage).then(topStories =>
+    getJobStories(page, itemsPerPage).then(topStories =>
       this.setState({ topStories, loaded: true })
     );
   }
@@ -22,7 +22,7 @@ class NewStories extends Component {
     const page = parseInt(this.props.match.params.page, 10) || 1;
     const itemsPerPage = 30;
     this.setState({ loaded: false });
-    getNewStories(page, itemsPerPage).then(topStories =>
+    getJobStories(page, itemsPerPage).then(topStories =>
       this.setState({ topStories, loaded: true })
     );
   }
@@ -30,7 +30,10 @@ class NewStories extends Component {
   render() {
     const itemsPerPage = 30;
     const page = parseInt(this.props.match.params.page, 10) || 1;
-
+    const PaginationComponent =
+      this.state.topStories.length < itemsPerPage
+        ? ""
+        : <Pagination page={page} category="/jobs/" />;
     if (!this.state.loaded) return <Loading />;
     return (
       <div>
@@ -41,14 +44,13 @@ class NewStories extends Component {
               story={story}
               key={story.id}
               itemId={page * itemsPerPage - (arr.length - index)}
-              showId
             />
           )}
         </ul>
-        <Pagination page={page} category="/new/" />
+        {PaginationComponent}
       </div>
     );
   }
 }
 
-export default NewStories;
+export default JobStories;

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { getNewStories } from "../api/hn-api";
+import { getAskStories } from "../api/hn-api";
 import Post from "./Post";
 import Loading from "./Loading";
 import Pagination from "./Pagination";
 
-class NewStories extends Component {
+class AskStories extends Component {
   state = {
     topStories: [],
     loaded: false
@@ -13,7 +13,7 @@ class NewStories extends Component {
   componentDidMount() {
     const itemsPerPage = 30;
     const page = parseInt(this.props.match.params.page, 10) || 1;
-    getNewStories(page, itemsPerPage).then(topStories =>
+    getAskStories(page, itemsPerPage).then(topStories =>
       this.setState({ topStories, loaded: true })
     );
   }
@@ -22,7 +22,7 @@ class NewStories extends Component {
     const page = parseInt(this.props.match.params.page, 10) || 1;
     const itemsPerPage = 30;
     this.setState({ loaded: false });
-    getNewStories(page, itemsPerPage).then(topStories =>
+    getAskStories(page, itemsPerPage).then(topStories =>
       this.setState({ topStories, loaded: true })
     );
   }
@@ -45,10 +45,10 @@ class NewStories extends Component {
             />
           )}
         </ul>
-        <Pagination page={page} category="/new/" />
+        <Pagination page={page} category="/ask/" />
       </div>
     );
   }
 }
 
-export default NewStories;
+export default AskStories;
