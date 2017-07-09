@@ -1,4 +1,4 @@
-[Hackernews](https://news.ycombinator.com/) client built with with `React.js` and `react-router`
+[Hackernews](https://news.ycombinator.com/) client built with with `React.js` and `react-router` using it's [Firebase API](https://github.com/HackerNews/API)
 
 ![Home page](http://i.imgur.com/V86cC8M.jpg "Home page")
 ![Comment section](http://i.imgur.com/x62ZvEy.jpg "Home page")
